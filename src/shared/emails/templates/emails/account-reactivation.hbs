@@ -1,0 +1,63 @@
+{{> header title="Account Reactivated - Welcome Back!"}}
+
+<div class="email-body">
+  <h1>Account Reactivated</h1>
+
+  <p>Hi {{userName}},</p>
+
+  <p>Great news! Your account has been reactivated and you can now access all features of the platform. 🎉</p>
+
+  <div style="background-color: #d1fae5; border: 1px solid #86efac; border-radius: 12px; padding: 20px; margin: 24px 0;">
+    <strong style="color: #166534;">✅ You can now:</strong>
+    <ul style="margin: 10px 0; padding-left: 20px; color: #14532d;">
+      <li>Log in to your account</li>
+      <li>Access all your profile information</li>
+      <li>Interact with the platform</li>
+      <li>Use all available features</li>
+    </ul>
+  </div>
+
+  <div style="text-align: center; margin: 32px 0;">
+    <a href="{{loginUrl}}" class="button">
+      Log In to Your Account
+    </a>
+  </div>
+
+  <p style="font-size: 14px; color: #64748b; margin: 16px 0;">
+    If the button doesn't work, copy and paste this link into your browser:
+  </p>
+  <p
+    style="word-break: break-all; background-color: #f8fafc; padding: 12px; border-radius: 8px; font-family: monospace; font-size: 13px; color: #0284c7;">
+    {{loginUrl}}
+  </p>
+
+  <div class="subscription-details" style="margin: 24px 0;">
+    <h2 style="font-size: 16px; margin-bottom: 12px;">Reactivation Details:</h2>
+    <div class="subscription-list">
+      <div class="subscription-row">
+        <span class="subscription-label">• Reactivation Date:</span>
+        <span class="subscription-value">{{reactivationDate}}</span>
+      </div>
+      <div class="subscription-row">
+        <span class="subscription-label">• Account Status:</span>
+        <span class="subscription-value">Active</span>
+      </div>
+    </div>
+  </div>
+
+  <p>Thank you for your patience. We're glad to have you back!</p>
+
+  <div style="background-color: #f0f9ff; border: 1px solid #bae6fd; border-radius: 12px; padding: 16px; margin: 24px 0;">
+    <strong style="color: #0284c7;">💡 Need Assistance?</strong>
+    <p style="margin: 8px 0 0 0; color: #0c4a6e; font-size: 14px;">
+      If you have any questions or need help getting started again, our support team is here to assist you.
+    </p>
+  </div>
+
+  <p style="margin-top: 32px;">
+    Best regards,<br>
+    <strong>The Team</strong>
+  </p>
+</div>
+
+{{> footer}}

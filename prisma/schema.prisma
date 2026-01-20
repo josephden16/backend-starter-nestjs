@@ -1,0 +1,172 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum AuthMedium {
+  Email
+  Google
+}
+
+enum UserRole {
+  USER
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  DEACTIVATED
+  DELETED
+}
+
+enum AdminRole {
+  ADMIN
+  MODERATOR
+}
+
+enum PasswordResetType {
+  ADMIN
+  USER
+}
+
+enum EmailVerificationType {
+  SIGNUP
+  PASSWORD_RESET
+}
+
+enum NotificationStatus {
+  PENDING
+  SENT
+  FAILED
+}
+
+model Admin {
+  id              String     @id @default(auto()) @map("_id") @db.ObjectId
+  email           String     @unique
+  password        String
+  firstName       String     @map("first_name")
+  lastName        String     @map("last_name")
+  phoneNumber     String?    @map("phone_number")
+  profilePhotoUrl String?    @map("profile_photo_url")
+  role            AdminRole  @default(ADMIN)
+  isSuper         Boolean    @default(false) @map("is_super")
+  status          UserStatus @default(ACTIVE)
+  isSuspended     Boolean    @default(false) @map("is_suspended")
+  isDeleted       Boolean    @default(false) @map("is_deleted")
+
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+  suspendedAt DateTime? @map("suspended_at")
+
+  @@map("admin_users")
+}
+
+model User {
+  id              String     @id @default(auto()) @map("_id") @db.ObjectId
+  email           String     @unique
+  password        String?
+  phoneNumber     String
+  authMedium      AuthMedium @default(Email) @map("auth_medium")
+  firstName       String     @map("first_name")
+  lastName        String     @map("last_name")
+  username        String     @unique
+  profilePhotoUrl String?    @map("profile_photo_url")
+  role            UserRole   @default(USER)
+  emailVerified   Boolean    @default(false) @map("email_verified")
+  status          UserStatus @default(ACTIVE)
+  isDeleted       Boolean    @default(false) @map("is_deleted")
+  deleteReason    String?    @map("delete_reason")
+
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+  suspendedAt DateTime? @map("suspended_at")
+
+  deviceRegistrations DeviceRegistration[]
+  notifications       UserNotification[]
+
+  @@map("users")
+}
+
+model PasswordReset {
+  id         String            @id @default(auto()) @map("_id") @db.ObjectId
+  email      String
+  code       String
+  type       PasswordResetType @default(ADMIN)
+  attempts   Int               @default(0)
+  expiresAt  DateTime          @map("expires_at")
+  verifiedAt DateTime?         @map("verified_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([email, type])
+  @@index([expiresAt])
+  @@map("password_resets")
+}
+
+model EmailVerification {
+  id        String                @id @default(auto()) @map("_id") @db.ObjectId
+  email     String
+  code      String
+  type      EmailVerificationType @default(SIGNUP)
+  attempts  Int                   @default(0)
+  expiresAt DateTime              @map("expires_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([email, type])
+  @@index([expiresAt])
+  @@map("email_verifications")
+}
+
+model DeviceRegistration {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String   @map("user_id") @db.ObjectId
+  token      String   @unique
+  platform   String
+  appVersion String?  @map("app_version")
+  lastUsedAt DateTime @default(now()) @map("last_used_at")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("device_registrations")
+}
+
+model UserNotification {
+  id            String             @id @default(auto()) @map("_id") @db.ObjectId
+  userId        String             @map("user_id") @db.ObjectId
+  templateKey   String             @map("template_key")
+  title         String
+  body          String
+  data          Json?
+  icon          String?
+  ctaLabel      String?            @map("cta_label")
+  ctaDeepLink   String?            @map("cta_deep_link")
+  sentAt        DateTime?          @map("sent_at")
+  readAt        DateTime?          @map("read_at")
+  isRead        Boolean            @default(false) @map("is_read")
+  status        NotificationStatus @default(PENDING)
+  failureReason String?            @map("failure_reason")
+  expiresAt     DateTime?          @map("expires_at")
+  createdAt     DateTime           @default(now()) @map("created_at")
+  updatedAt     DateTime           @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt(sort: Desc)])
+  @@index([status])
+  @@index([isRead])
+  @@index([expiresAt])
+  @@map("user_notifications")
+}

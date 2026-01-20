@@ -1,0 +1,71 @@
+{{> header title="Confirm Account Deletion"}}
+
+<div class="email-body">
+  <h1>Confirm Account Deletion</h1>
+
+  <p>Hi {{userName}},</p>
+
+  <p>We received a request to permanently delete your account. This action is
+    <strong>irreversible</strong> and will result in:
+  </p>
+
+  <ul style="margin: 16px 0; padding-left: 20px; color: #334155;">
+    <li>Loss of access to your account and all associated data.</li>
+    <li>Deletion of your personal information from our servers.</li>
+    <li>Termination of any active subscriptions or services linked to your account.</li>
+  </ul>
+
+  <p><strong>If you want to proceed with the account deletion, click the button below:</strong></p>
+
+  <div style="text-align: center; margin: 32px 0;">
+    <a href="{{confirmationUrl}}" class="button"
+      style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.3);">
+      Confirm Account Deletion
+    </a>
+  </div>
+
+  <p style="font-size: 14px; color: #64748b;">If the button doesn't work, copy and paste this link into your browser:</p>
+  <p
+    style="word-break: break-all; background-color: #f8fafc; padding: 12px; border-radius: 8px; font-family: monospace; font-size: 13px; color: #0284c7;">
+    {{confirmationUrl}}
+  </p>
+
+  <div class="subscription-details" style="margin: 24px 0;">
+    <h2 style="font-size: 16px; margin-bottom: 12px;">Security Information:</h2>
+    <div class="subscription-list">
+      <div class="subscription-row">
+        <span class="subscription-label">• Expires in:</span>
+        <span class="subscription-value">{{expiryTime}} hour(s)</span>
+      </div>
+      <div class="subscription-row">
+        <span class="subscription-label">• Request IP:</span>
+        <span class="subscription-value">{{requestIP}}</span>
+      </div>
+      <div class="subscription-row">
+        <span class="subscription-label">• Request Time:</span>
+        <span class="subscription-value">{{requestDate}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background-color: #f0f9ff; border: 1px solid #bae6fd; border-radius: 12px; padding: 16px; margin: 24px 0;">
+    <strong style="color: #0284c7;">💡 Changed Your Mind?</strong>
+    <p style="margin: 8px 0 0 0; color: #0c4a6e; font-size: 14px;">
+      If you don't want to delete your account, simply ignore this email. Your account will remain active and
+      secure.
+    </p>
+  </div>
+
+  <h3 style="color: #0284c7; font-size: 18px; margin-top: 32px;">Still Have Questions?</h3>
+  <p>If you didn't request account deletion or have concerns about your account security, please contact our support
+    team immediately.</p>
+
+  <p>We're sorry to see you go, but we understand that circumstances change.</p>
+
+  <p style="margin-top: 32px;">
+    Best regards,<br>
+    <strong>The Team</strong>
+  </p>
+</div>
+
+{{> footer}}

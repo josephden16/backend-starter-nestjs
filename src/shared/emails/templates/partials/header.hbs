@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Archivo', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #F8FAFC;
+      color: #475569;
+      /* Updated to Slate 600 */
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .email-wrapper {
+      width: 100%;
+      background-color: #F8FAFC;
+      padding: 40px 0;
+    }
+
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 0px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    }
+
+    .email-header {
+      background: linear-gradient(180deg, #50B6FF -29.95%, #FFFFFF 37.64%);
+      /* Updated gradient */
+      padding: 42px 42px 60px 42px;
+      text-align: left;
+      position: relative;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      position: absolute;
+      top: -30px;
+    }
+
+    .email-body {
+      padding: 40px 40px 20px 40px;
+      background-color: #ffffff;
+    }
+
+    h1 {
+      color: #082F50;
+      /* Updated to Main heading color */
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+
+    p {
+      margin-bottom: 16px;
+      font-size: 16px;
+      color: #475569;
+      /* Updated to Email texts color */
+    }
+
+    strong {
+      color: #082F50;
+      /* Updated to Bold texts color */
+      font-weight: 600;
+    }
+
+    /* Subscription Box Styles */
+    .subscription-details {
+      background-color: #F1F5F9;
+      /* Updated to Highlight box color */
+      border-radius: 12px;
+      padding: 16px;
+      margin: 32px 0;
+    }
+
+    .subscription-details h2 {
+      color: #082F50;
+      /* Updated to Main heading color */
+      font-size: 16px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .subscription-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .subscription-row {
+      margin-bottom: 12px;
+      color: #475569;
+      /* Updated to Email texts color */
+      font-size: 15px;
+      display: block;
+      line-height: 1.5;
+    }
+
+    .subscription-label {
+      color: #475569;
+      /* Updated to Email texts color */
+      margin-right: 4px;
+    }
+
+    .subscription-value {
+      color: #082F50;
+      /* Updated to Bold texts color */
+      font-weight: 700;
+    }
+
+    .button {
+      display: inline-block;
+      background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+      color: #ffffff !important;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 24px 0;
+      text-align: center;
+      box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.2);
+    }
+
+    .email-footer {
+      padding: 0 40px 40px 40px;
+      text-align: left;
+      font-size: 13px;
+      color: #94A3B8;
+      background-color: #ffffff;
+    }
+
+    .security-notice {
+      background-color: #FEFCE8;
+      border: 1px solid #FEF08A;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 24px 0;
+      font-size: 14px;
+      color: #854D0E;
+    }
+
+    @media (max-width: 600px) {
+      .email-wrapper {
+        padding: 0;
+      }
+
+      .email-container {
+        border-radius: 0;
+      }
+
+      .email-header,
+      .email-body,
+      .email-footer {
+        padding: 24px;
+      }
+
+      .subscription-details {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="email-wrapper">
+    <div class="email-container">
+      <div class="email-header">
+      </div>

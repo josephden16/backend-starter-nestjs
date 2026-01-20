@@ -1,0 +1,40 @@
+{{> header title="Verify Your Email Address"}}
+
+<div class="email-body">
+  <h1>Verify Your Email Address</h1>
+
+  <p>Hi {{userName}},</p>
+
+  <p>Thank you for signing up! To complete your registration and start using our platform,
+    please verify your email address by entering the verification code below in the app.</p>
+
+  <div style="text-align: center; margin: 40px 0;">
+    <div
+      style="background-color: #f0f9ff; border: 1px solid #bae6fd; border-radius: 12px; padding: 32px; display: inline-block; min-width: 200px;">
+      <p style="margin: 0; font-size: 14px; color: #64748b; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">Your Verification Code</p>
+      <p
+        style="margin: 16px 0 0 0; font-size: 40px; font-weight: 700; color: #0284c7; letter-spacing: 8px; font-family: monospace;">
+        {{code}}</p>
+    </div>
+  </div>
+
+  <p style="text-align: center; color: #64748b; font-size: 14px;">
+    This code will expire in <strong>{{expiryMinutes}} minutes</strong>.
+  </p>
+
+  <div class="security-notice">
+    <strong style="color: #854d0e;">Security Note:</strong>
+    <p style="margin: 8px 0 0 0; color: #854d0e;">
+      If you didn't create an account with us, please ignore this email.
+    </p>
+  </div>
+
+  <p>If you have any questions, feel free to reach out to our support team.</p>
+
+  <p style="margin-top: 32px;">
+    Best regards,<br>
+    <strong>The Team</strong>
+  </p>
+</div>
+
+{{> footer}}
