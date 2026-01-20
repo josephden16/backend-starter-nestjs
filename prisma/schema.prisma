@@ -180,3 +180,13 @@ model UserNotification {
   @@index([expiresAt])
   @@map("user_notifications")
 }
+
+model SystemSettings {
+  id                     String   @id @default(auto()) @map("_id") @db.ObjectId
+  allowedEmailExtensions String[] @map("allowed_email_extensions")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("system_settings")
+}
