@@ -158,7 +158,7 @@ src/
 ### Authentication & Authorization
 
 - JWT-based authentication for admins and users
-- Role-based access control (Admin, Moderator, Employer, Applicant)
+- Role-based access control (Admin, Moderator, User)
 - Secure password hashing with bcryptjs
 
 ### Admin Management

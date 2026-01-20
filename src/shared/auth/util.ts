@@ -13,7 +13,7 @@ import { GetUserType } from './types';
 export const checkRowLevelPermission = (
   user: GetUserType,
   requestedId?: string | string[],
-  roles: (AdminRole | UserRole)[] = ['ADMIN', 'APPLICANT'],
+  roles: (AdminRole | UserRole)[] = ['ADMIN', 'USER'],
 ): boolean => {
   const userRole = user.roles;
 

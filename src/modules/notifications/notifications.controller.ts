@@ -36,7 +36,7 @@ export class NotificationsController {
   constructor(private readonly notificationsService: NotificationsService) {}
 
   @Post('tokens')
-  @AllowAuthenticated(UserRole.APPLICANT, UserRole.EMPLOYER)
+  @AllowAuthenticated(UserRole.USER)
   @RegisterDeviceTokenDocs()
   registerDeviceToken(
     @Body() dto: RegisterDeviceTokenDto,
@@ -46,7 +46,7 @@ export class NotificationsController {
   }
 
   @Get()
-  @AllowAuthenticated(UserRole.APPLICANT, UserRole.EMPLOYER)
+  @AllowAuthenticated(UserRole.USER)
   @ListNotificationsDocs()
   listNotifications(
     @Query() query: ListNotificationsQueryDto,
@@ -60,14 +60,14 @@ export class NotificationsController {
   }
 
   @Get('unread-count')
-  @AllowAuthenticated(UserRole.APPLICANT, UserRole.EMPLOYER)
+  @AllowAuthenticated(UserRole.USER)
   @GetUnreadCountDocs()
   getUnreadCount(@GetUser() user: AuthenticatedUser) {
     return this.notificationsService.getUnreadCount(user.id);
   }
 
   @Patch(':id/read')
-  @AllowAuthenticated(UserRole.APPLICANT, UserRole.EMPLOYER)
+  @AllowAuthenticated(UserRole.USER)
   @MarkNotificationReadDocs()
   markNotification(
     @Param('id') id: string,
@@ -82,7 +82,7 @@ export class NotificationsController {
   }
 
   @Patch('read')
-  @AllowAuthenticated(UserRole.APPLICANT, UserRole.EMPLOYER)
+  @AllowAuthenticated(UserRole.USER)
   @MarkNotificationsDocs()
   markNotifications(
     @Body() body: MarkNotificationsDto,

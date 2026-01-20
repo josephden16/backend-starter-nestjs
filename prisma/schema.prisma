@@ -45,6 +45,16 @@ enum NotificationStatus {
   FAILED
 }
 
+enum PaymentChannel {
+  CARD
+  BANK_TRANSFER
+  BANK_ACCOUNT
+  USSD
+  MOBILE_MONEY
+  QR
+  APPLE_PAY
+}
+
 model Admin {
   id              String     @id @default(auto()) @map("_id") @db.ObjectId
   email           String     @unique

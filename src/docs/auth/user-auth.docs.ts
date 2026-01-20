@@ -68,7 +68,7 @@ export const VerifyEmailDocs = () =>
               email: 'user@example.com',
               firstName: 'John',
               lastName: 'Doe',
-              role: 'APPLICANT',
+              role: 'USER',
             },
             tokens: {
               accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
@@ -133,7 +133,7 @@ Authenticates user with email and password credentials.
               email: 'user@example.com',
               firstName: 'John',
               lastName: 'Doe',
-              role: 'APPLICANT',
+              role: 'USER',
             },
             tokens: {
               accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
@@ -168,7 +168,7 @@ export const LoginWithGoogleDocs = () =>
               email: 'user@example.com',
               firstName: 'John',
               lastName: 'Doe',
-              role: 'APPLICANT',
+              role: 'USER',
             },
             tokens: {
               accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
